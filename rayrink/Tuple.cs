@@ -21,14 +21,14 @@ namespace rayrink
         public float Z { get => z; set => z = value; }
         public float W { get => w; set => w = value; }
 
-        public Boolean IsVector()
+        public bool IsVector()
         {
             if (MathHelper.IsEqual(this.w, 0.0f))
                 return true;
             return false;
         }
 
-        public Boolean IsPoint()
+        public bool IsPoint()
         {
             if (MathHelper.IsEqual(this.w, 1.0f))
                 return true;
