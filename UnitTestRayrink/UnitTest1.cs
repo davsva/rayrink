@@ -7,6 +7,30 @@ namespace UnitTestRayrink
     public class UnitTestBasics
     {
         [TestMethod]
+        public void TestTupleSubtractionTwoVectors()
+        {
+            Vector v1 = new Vector(3f, 2f, 1f);
+            Vector v2 = new Vector(5f, 6f, 7f);
+            Assert.AreEqual(new Vector(-2f, -4f, -6f), v1 - v2);
+        }
+
+        [TestMethod]
+        public void TestTupleSubtractionVectorFromPoint()
+        {
+            Point p = new Point(3f, 2f, 1f);
+            Vector v = new Vector(5f, 6f, 7f);
+            Assert.AreEqual(new Point(-2f, -4f, -6f), p - v);
+        }
+
+        [TestMethod]
+        public void TestTupleSubtractionTwoPoints()
+        {
+            Point p1 = new Point(3f, 2f, 1f);
+            Point p2 = new Point(5f, 6f, 7f);
+            Assert.AreEqual(new Vector(-2f, -4f, -6f), p1 - p2);
+        }
+
+        [TestMethod]
         public void TestTupleAddition()
         {
             Tuple a1 = new Tuple(3f, -2f, 5f, 1f);
