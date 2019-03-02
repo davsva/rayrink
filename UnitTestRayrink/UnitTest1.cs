@@ -7,6 +7,20 @@ namespace UnitTestRayrink
     public class UnitTestBasics
     {
         [TestMethod]
+        public void TestTupleEquality()
+        {
+            Point p1 = new Point(2f, -3f, 4f);
+            Point p2 = new Point(2f, 6f, 4f);
+            Point p3 = new Point(2f, -3f, 4f);
+            Vector v1 = new Vector(2f, -3f, 4f);
+            Tuple t1 = new Tuple(2f, -3f, 4f, 1.0f);
+            Assert.AreEqual(p1, p3);
+            Assert.AreNotEqual(p1, p2);
+            Assert.AreNotEqual(p2, v1);
+            Assert.AreEqual(p1, t1);
+        }
+
+        [TestMethod]
         public void TestVector()
         {
             Vector v = new Vector(4f, -4f, 3f);

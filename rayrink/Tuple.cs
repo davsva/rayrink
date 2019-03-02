@@ -34,5 +34,15 @@ namespace rayrink
                 return true;
             return false;
         }
+
+        public override bool Equals(object obj)
+        {
+            var tuple = obj as Tuple;
+            return tuple != null &&
+                MathHelper.IsEqual(x, tuple.x) &&
+                MathHelper.IsEqual(y, tuple.y) &&
+                MathHelper.IsEqual(z, tuple.z) &&
+                MathHelper.IsEqual(w, tuple.w);
+        }
     }
 }
