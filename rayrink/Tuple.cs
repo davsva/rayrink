@@ -44,5 +44,10 @@ namespace rayrink
                 MathHelper.IsEqual(z, tuple.z) &&
                 MathHelper.IsEqual(w, tuple.w);
         }
+
+        public static Tuple operator +(Tuple a, Tuple b)
+        {
+            return new Tuple(a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w);
+        }
     }
 }

@@ -7,6 +7,14 @@ namespace UnitTestRayrink
     public class UnitTestBasics
     {
         [TestMethod]
+        public void TestTupleAddition()
+        {
+            Tuple a1 = new Tuple(3f, -2f, 5f, 1f);
+            Tuple a2 = new Tuple(-2f, 3f, 1f, 0f);
+            Assert.AreEqual(new Tuple(1f, 1f, 6f, 1f), a1 + a2);
+        }
+
+        [TestMethod]
         public void TestTupleEquality()
         {
             Point p1 = new Point(2f, -3f, 4f);
