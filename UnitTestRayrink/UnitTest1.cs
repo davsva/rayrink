@@ -6,6 +6,75 @@ namespace UnitTestRayrink
     [TestClass]
     public class UnitTestBasics
     {
+
+        [TestMethod]
+        public void TestNormalization()
+        {
+            Vector v1 = new Vector(4f, 0f, 0f);
+            Assert.AreEqual(new Vector(1f, 0f, 0f), v1.Normalize());
+
+            Vector v2 = new Vector(1f, 2f, 3f);
+            Assert.AreEqual(new Vector(0.26726f, 0.53452f, 0.80178f), v2.Normalize());
+
+            Vector v3 = new Vector(1f, 2f, 3f);
+            Assert.IsTrue(MathHelper.IsEqual(1f, v3.Normalize().Magnitude()));
+        }
+
+        [TestMethod]
+        public void TestMagnitude()
+        {
+            Vector v1 = new Vector(1f, 0f, 0f);
+            Assert.AreEqual(1f, v1.Magnitude());
+
+            Vector v2 = new Vector(0f, 1f, 0f);
+            Assert.AreEqual(1f, v2.Magnitude());
+
+            Vector v3 = new Vector(0f, 0f, 1f);
+            Assert.AreEqual(1f, v3.Magnitude());
+
+            Vector v4 = new Vector(1f, 2f, 3f);
+            Assert.AreEqual((float)System.Math.Sqrt(14), v4.Magnitude());
+
+            Vector v5 = new Vector(-1f, -2f, -3f);
+            Assert.AreEqual((float)System.Math.Sqrt(14), v5.Magnitude());
+        }
+
+        [TestMethod]
+        public void TestDividingTupleByScalar()
+        {
+            Tuple a = new Tuple(1f, -2f, 3f, -4f);
+            Assert.AreEqual(new Tuple(0.5f, -1f, 1.5f, -2f), a / 2f);
+        }
+
+        [TestMethod]
+        public void TestMultyplyingTupleByFraction()
+        {
+            Tuple a = new Tuple(1f, -2f, 3f, -4f);
+            Assert.AreEqual(new Tuple(0.5f, -1f, 1.5f, -2f), a * 0.5f);
+        }
+
+        [TestMethod]
+        public void TestMultyplyingTupleByScalar()
+        {
+            Tuple a = new Tuple(1f, -2f, 3f, -4f);
+            Assert.AreEqual(new Tuple(3.5f, -7f, 10.5f, -14f), a * 3.5f);
+        }
+
+        [TestMethod]
+        public void TestNegatingTuple()
+        {
+            Tuple a = new Tuple(1f, -2f, 3f, -4f);
+            Assert.AreEqual(new Tuple(-1f, 2f, -3f, 4f), -a);
+        }
+
+        [TestMethod]
+        public void TestSubtractVectorFromZeroVector()
+        {
+            Vector zero = new Vector(0f, 0f, 0f);
+            Vector v = new Vector(1f, -2f, 3f);
+            Assert.AreEqual(new Vector(-1f, 2f, -3f), zero - v);
+        }
+
         [TestMethod]
         public void TestTupleSubtractionTwoVectors()
         {

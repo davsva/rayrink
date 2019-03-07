@@ -37,12 +37,16 @@ namespace rayrink
 
         public override bool Equals(object obj)
         {
-            var tuple = obj as Tuple;
-            return tuple != null &&
+            return obj is Tuple tuple &&
                 MathHelper.IsEqual(x, tuple.x) &&
                 MathHelper.IsEqual(y, tuple.y) &&
                 MathHelper.IsEqual(z, tuple.z) &&
                 MathHelper.IsEqual(w, tuple.w);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(x, y, z, w);
         }
 
         public static Tuple operator +(Tuple a, Tuple b)
@@ -53,6 +57,21 @@ namespace rayrink
         public static Tuple operator -(Tuple a, Tuple b)
         {
             return new Tuple(a.x - b.x, a.y - b.y, a.z - b.z, a.w - b.w);
+        }
+
+        public static Tuple operator -(Tuple a)
+        {
+            return new Tuple(-a.x, -a.y, -a.z, -a.w);
+        }
+
+        public static Tuple operator *(Tuple a, float scalar)
+        {
+            return new Tuple(a.x * scalar, a.y * scalar, a.z * scalar, a.w * scalar);
+        }
+
+        public static Tuple operator /(Tuple a, float scalar)
+        {
+            return new Tuple(a.x / scalar, a.y / scalar, a.z / scalar, a.w / scalar);
         }
     }
 }
